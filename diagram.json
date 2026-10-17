@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "Weather Station",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -140, "left": 330, "attrs": { "temperature": "24", "humidity": "50" } },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": -140, "left": -200, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -300, "left": 0, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-pushbutton", "id": "btn1", "top": 60, "left": 320, "attrs": { "color": "green" } }
+  ],
+  "connections": [
+    ["uno:5V", "dht1:VCC", "red", []],
+    ["uno:GND.1", "dht1:GND", "black", []],
+    ["uno:2", "dht1:SDA", "green", []],
+
+    ["uno:5V", "ldr1:VCC", "red", []],
+    ["uno:GND.1", "ldr1:GND", "black", []],
+    ["uno:A0", "ldr1:AO", "orange", []],
+
+    ["uno:5V", "lcd1:VCC", "red", []],
+    ["uno:GND.1", "lcd1:GND", "black", []],
+    ["uno:A4", "lcd1:SDA", "blue", []],
+    ["uno:A5", "lcd1:SCL", "purple", []],
+
+    ["uno:3", "btn1:1.l", "green", []],
+    ["uno:GND.2", "btn1:2.l", "black", []]
+  ],
+  "dependencies": {}
+}
